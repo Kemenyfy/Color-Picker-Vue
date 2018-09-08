@@ -7,32 +7,33 @@
     </header>
     <section>
       <section class="Main-Picker">
-        <div class="ColorBox" style="currentStyle"></div>
+        <div class="ColorBox" :style="boxStyle" >  
+        </div>
           <section class="Sliders">
             <div class="Captions">Hue</div>
             <input 
               type="range" 
               min="0" 
-              max="360" 
-              valueName="hue" 
-              v-model="value"
-              v-on:input="updateValue()" />
+              max="360"  
+              id="hue"
+              v-on:input="this.updateHueValue"
+              :value="this.hue" />
             <div class="Captions">Saturation</div>
             <input 
               type="range"
               min="0" 
               max="100"
-              valueName="saturation" 
-              :value="saturation"
-              v-on:input="updateValue()" />
+              id="saturation" 
+              v-on:input="updateSaturationValue"
+              :value="this.saturation" />
             <div class="Captions">Lightness</div>
             <input 
               type="range" 
               min="0" 
               max="100" 
-              valueName="lightness"
-              :value="lightness" 
-              v-on:input="updateValue()" />
+              id="lightness"
+              v-on:input="updateLightnessValue"
+              :value="this.lightness" />
           </section>
       </section>
     <section>
@@ -45,26 +46,32 @@
 <script>
 export default {
   name: "ColorPicker",
-  props: {
-    value: Number,
-  },
   data: function() {
     return {
-      dataValue: this.value,
       hue: 180,
       saturation: 50,
-      lightness: 50
+      lightness: 50,
+      alpha: 100
     }
   },
   methods: {
-    updateValue: function() {
-      this.value = parseInt(this.dataValue);
-      valueName = this.value
+    updateHueValue: function (event){
+      return this.hue = event.target.value
     },
-    currentStyle: function () {
-      return `backgroundColor: hsla(${this.hue}, ${this.saturation}%, ${this.lightness}%);`
+    updateSaturationValue: function (event){
+      return this.saturation = event.target.value
+    },
+    updateLightnessValue: function (event){
+      return this.lightness = event.target.value
     }
-  }
+  },
+  computed: {
+    boxStyle: function() {
+      return {
+        "background-color": "rgb(" + this.hue + " " + this.saturation + " " + this.lightness + " )",
+      };
+    }
+  },
 };
 </script>
 
