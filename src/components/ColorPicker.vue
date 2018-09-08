@@ -41,7 +41,7 @@
           </section>
       </section>
     <section>
-      <input class="ColorInputs" placeholder="Color Hex" type="text"/>
+      <p class="ColorInputs"> hsla({{this.hue}}, {{this.saturation}}, {{this.lightness}}, {{this.newAlpha}})</p>
     </section>  
     </section>
   </div>
@@ -145,5 +145,6 @@ input {
 
 .ColorInputs {
   margin-top: 0.8em;
+  font-size: .8em;
 }
 </style>
