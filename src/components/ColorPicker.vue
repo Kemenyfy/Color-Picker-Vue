@@ -2,7 +2,7 @@
   <div class="App">
     <header class="App-Header">
       <header class="App-Title-1">A Pretty Useful</header>
-      <header class="App-Title-2">Color Picker</header>
+      <header class="App-Title-2" :style="titleStyle">Color Picker</header>
       <header class="App-Title-3">Created by Somebody/Somehow/Maybe</header>
     </header>
     <section>
@@ -78,8 +78,11 @@ export default {
     },
     boxStyle: function() {
       return {
-        "background-color":
-          "rgba(" + this.hue + ", " + this.saturation + ", " + this.lightness + ", " + this.newAlpha + " )",
+        "background-color": "hsla(" + this.hue + ", " + this.saturation + "%, " + this.lightness + "%, " + this.newAlpha + " )",
+      };},
+    titleStyle: function() {
+      return {
+        "color": "hsla(" + this.hue + ", " + this.saturation + "%, " + this.lightness + "%, " + this.newAlpha + " )",
       };}
   },
 };
