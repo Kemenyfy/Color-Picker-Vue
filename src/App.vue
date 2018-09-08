@@ -1,16 +1,16 @@
 <template>
   <div>
-    <Snowman />
+    <ColorPicker />
   </div>
 </template>
 
 <script>
-import Snowman from './components/Snowman.vue'
+import ColorPicker from './components/ColorPicker.vue'
 
 export default {
   name: 'App',
   components: {
-    Snowman
+    ColorPicker
   }
 }
 </script>
