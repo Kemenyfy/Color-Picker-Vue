@@ -14,8 +14,7 @@
             <input 
               type="range" 
               min="0" 
-              max="360"  
-              id="hue"
+              max="360"
               v-on:input="this.updateHueValue"
               :value="this.hue" />
             <div class="Captions">Saturation</div>
@@ -23,17 +22,22 @@
               type="range"
               min="0" 
               max="100"
-              id="saturation" 
               v-on:input="updateSaturationValue"
               :value="this.saturation" />
             <div class="Captions">Lightness</div>
             <input 
               type="range" 
               min="0" 
-              max="100" 
-              id="lightness"
+              max="100"
               v-on:input="updateLightnessValue"
               :value="this.lightness" />
+            <div class="Captions">Alpha</div>
+            <input 
+              type="range" 
+              min="0" 
+              max="100"
+              v-on:input="updateAlphaValue"
+              :value="this.alpha" />
           </section>
       </section>
     <section>
@@ -63,14 +67,20 @@ export default {
     },
     updateLightnessValue: function (event){
       return this.lightness = event.target.value
+    },
+    updateAlphaValue: function (event){
+      return this.alpha = event.target.value
     }
   },
   computed: {
+    newAlpha: function () {
+      return this.alpha / 100
+    },
     boxStyle: function() {
       return {
-        "background-color": "rgb(" + this.hue + " " + this.saturation + " " + this.lightness + " )",
-      };
-    }
+        "background-color":
+          "rgba(" + this.hue + ", " + this.saturation + ", " + this.lightness + ", " + this.newAlpha + " )",
+      };}
   },
 };
 </script>
@@ -105,7 +115,7 @@ export default {
 
 .ColorBox {
   background-color: black;
-  height: 7em;
+  height: 9em;
   width: 7em;
   border-radius: 6px;
 }
