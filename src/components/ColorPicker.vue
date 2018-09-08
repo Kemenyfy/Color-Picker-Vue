@@ -145,6 +145,11 @@ input {
 
 .ColorInputs {
   margin-top: 0.8em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 12em;
   font-size: .8em;
+  border: 1px solid #222;
+  border-radius: 4px;
 }
 </style>
